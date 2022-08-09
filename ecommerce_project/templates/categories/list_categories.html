@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Lista de categorías
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-4 mt-4">
+            <h1>
+                Categorías
+            </h1>
+        </div>
+
+        {% for element in categories %}
+            <div class="col-xs-12 col-md-4">
+                <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; height: 100%">
+                    <div class="card-body">
+                        <h4 class="card-title">{{element.name}}</h4>
+                        <p class="card-text">{{element.description}}</p>
+                        <p class="card-text">Palabras clave: {{element.keywords}}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
