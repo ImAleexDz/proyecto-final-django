@@ -69,11 +69,25 @@ def create_product(request):
         //
         """
         )
+    new_product4 = productos.objects.create(
+        name="Logitech G Series Lightspeed G305 blue",
+        price=23,
+        descreption=""""
+        Tipo de mouse: De juego
+        //
+        Resolución del sensor: 12000 dpi
+        //
+        Tipo de sensor: Óptico
+        //
+        """
+        )
+        
     context = {
         "new_product":new_product,
         "new_product1":new_product1,
         "new_product2":new_product2,
-        "new_product3":new_product3
+        "new_product3":new_product3,
+        "new_product4":new_product4
         
 
     }    
