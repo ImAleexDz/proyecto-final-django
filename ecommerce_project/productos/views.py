@@ -1,81 +1,27 @@
-from django.shortcuts import render
-from productos.models import productos
+from unicodedata import name
+from django.shortcuts import redirect, render
+from productos.models import Products
+from .forms import ProductForm
 
 def create_product(request):
-    new_product = productos.objects.create(
-        name="Teclado Mecanico Rex Dragon",
-        price=35,
-        descreption="""
-        Es gamer: Sí
-        //
-        Idioma: Inglés US
-        //
-        Color de la retroiluminación: RGB
-        //
-        Tipo de switch: Outemu Brown
-        //
-        Con Bluetooth: Sí
 
-        """)
-    
-    new_product1 = productos.objects.create(
-        name="Monitor Tedge MNT24/01 led 24'' negro 220V",
-        price=185,
-        descreption="""
-        Tamaño de la pantalla: 24 "
-        //
-        Con pantalla táctil: No
-        //
-        Con altavoces incorporados: Sí
-        //
-        Tipo de resolución: Full HD
-        //
-        Es reclinable: Sí
-        //
-        """)
-    
-    new_product2 = productos.objects.create(
-        name="Silla de escritorio Smart Tech WS8511 gamer ergonómica  ",
-        price=242,
-        descreption="""
-        Es gamer: Sí
-        //
-        Con altura regulable: Sí
-        //
-        Con respaldo reclinable: Sí
-        //
-        Es ergonómica: Sí
-        //
-        Con apoyabrazos ajustable: Sí
-        //
-        Es giratoria: Sí
-        //
-        
-        
-        """    )
-    new_product3 = productos.objects.create(
-        name="Placa de video Nvidia Colorful GeForce 10 Series GTX 1050 Ti 4GB",
-        price=180,
-        descreption="""
-        Fabricante: Nvidia
-        //
-        Tipo de memoria gráfica: GDDR5
-        //
-        Interfaz con la placa madre: PCI-Express 3.0
-        //
-        Tamaño de memoria: 4 GB
-        //
-        Contectividad: DVI, HDMI, DisplayPort
-        //
-        """
-        )
-    context = {
-        "new_product":new_product,
-        "new_product1":new_product1,
-        "new_product2":new_product2,
-        "new_product3":new_product3
-        
+    if request.method == "POST":
+        form = ProductForm(request.POST)
 
-    }    
-    return render(request, "new_product.html", context=context)
+        if form.is_valid():
+            Products.objects.create(
+                name = form.cleaned_data['name'],
+                price = form.cleaned_data['price'],
+                description = form.cleaned_data['description'],
+                is_active = form.cleaned_data['is_active'],
+                category = form.cleaned_data['category']
+            )
+
+        return redirect()
+
+    elif request.method == "GET":
+        form = ProductForm()
+        context = {'form': form}
+    
+        return render(request, "new_product.html", context=context)
 

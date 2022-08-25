@@ -1,16 +1,53 @@
-<h1>{{new_product.name}}</h1>
-<h2>PRECIO ${{new_product.price}}</h2>
-<h3>{{new_product.descreption}}</h3>
-<h1>--------------------------------------------------------------------------------------------------------</h1>
-<h1>{{new_product1.name}}</h1>
-<h2>PRECIO ${{new_product1.price}}</h2>
-<h3>{{new_product1.descreption}}</h3>
-<h1>--------------------------------------------------------------------------------------------------------</h1>
-<h1>{{new_product2.name}}</h1>
-<h2>PRECIO ${{new_product2.price}}</h2>
-<h3>{{new_product2.descreption}}</h3>
-<h1>--------------------------------------------------------------------------------------------------------</h1>
-<h1>{{new_product3.name}}</h1>
-<h2>PRECIO ${{new_product3.price}}</h2>
-<h3>{{new_product3.descreption}}</h3>
-<h1>--------------------------------------------------------------------------------------------------------</h1>
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Crear productos
+{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-4">
+            <h1>
+                Crear nuevo producto
+            </h1>
+        </div>
+        
+        {% comment %} <div class="col-12">
+            <form method="POST">
+                {% csrf_token %}
+
+                <div>
+                    <label class="text-secondary">
+                        {{form.name.label}}
+                    </label>
+                    <br/>
+                    {{form.name}}
+                </div>
+
+                <div class="mt-2">
+                    <label class="text-secondary">
+                        {{form.description.label}}
+                    </label>
+                    <br/>
+                    {{form.description}}
+                </div>
+
+                <div class="mt-2">
+                    <label class="text-secondary">
+                        {{form.keywords.label}}
+                    </label>
+                    <br/>
+                    {{form.keywords}}
+                </div>
+                <br/>
+                <input class="btn btn-primary" type="submit" value="Crear" />
+            </form>
+        </div> {% endcomment %}
+
+        {{form}}
+
+    </div>
+</div>
+
+{% endblock %}
