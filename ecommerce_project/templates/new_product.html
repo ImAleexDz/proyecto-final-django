@@ -13,7 +13,7 @@
             </h1>
         </div>
         
-        {% comment %} <div class="col-12">
+         <div class="col-12">
             <form method="POST">
                 {% csrf_token %}
 
@@ -35,17 +35,34 @@
 
                 <div class="mt-2">
                     <label class="text-secondary">
-                        {{form.keywords.label}}
+                        {{form.price.label}}
                     </label>
                     <br/>
-                    {{form.keywords}}
+                    {{form.price}}
                 </div>
                 <br/>
+
+                <div class="mt-2">
+                    <label class="text-secondary">
+                        {{form.is_active.label}}
+                    </label>
+                    <br/>
+                    {{form.is_active}}
+                </div>
+                <br/>
+
+                <div class="mt-2">
+                    <label class="text-secondary">
+                        {{form.category.label}}
+                    </label>
+                    <br/>
+                    {{form.category}}
+                </div>
+                <br/>
+
+
                 <input class="btn btn-primary" type="submit" value="Crear" />
             </form>
-        </div> {% endcomment %}
-
-        {{form}}
 
     </div>
 </div>

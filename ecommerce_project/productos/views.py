@@ -17,11 +17,21 @@ def create_product(request):
                 category = form.cleaned_data['category']
             )
 
-        return redirect()
+        return redirect(list_products)
 
     elif request.method == "GET":
         form = ProductForm()
         context = {'form': form}
     
         return render(request, "new_product.html", context=context)
+
+def list_products(request):
+
+    products = Products.objects.all()
+
+    context = {
+        "products": products
+    }
+
+    return render(request, "products/list_products.html", context=context)
 
