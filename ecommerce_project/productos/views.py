@@ -35,3 +35,10 @@ def list_products(request):
 
     return render(request, "products/list_products.html", context=context)
 
+def view_product(request, pk):
+
+    product = Products.objects.get(id=pk)
+
+    context={'product': product}
+
+    return render(request, "products/view_product.html", context=context)
