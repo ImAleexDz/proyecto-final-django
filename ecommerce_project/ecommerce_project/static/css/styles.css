@@ -1,0 +1,23 @@
+/* Navbar */
+.my-nav {
+    background-color: coral !important;
+}
+
+.banner-promotion {
+    background-color: black;
+    padding: 5px 0;
+}
+
+.banner-promotion p {
+    color:coral;
+    margin: auto 0;
+}
+
+.bg {
+    height: 400px;
+    width: 100%;
+    background-image: url("https://doto.vtexassets.com/assets/vtex.file-manager-graphql/images/0dce8973-6653-44e5-af68-2f4ea804ebf8___0407f0058387e4346bcd2fe8847525b2.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    margin-bottom: 50px;
+}
