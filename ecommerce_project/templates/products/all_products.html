@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Productos
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-4 mt-4">
+            <h1>
+                Productos
+            </h1>
+        </div>
+
+        {% for element in products %}
+            <div class="col-xs-12 col-md-4 mt-2">
+                <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; height: 100%">
+                    <div class="card-body">
+                        
+                        <h4 class="card-title">{{element.name}}</h4>
+                        <p class="card-text">${{element.price}}</p>
+                        
+                    </div>
+
+                    <div class="card-footer text-center">
+                        <a class="btn btn-success" href="/products/item/{{element.id}}/" role="button">Ver producto</a>
+                        <br/>
+                        <br/>
+                        <a class="btn btn-primary" href="/products/update-product/{{element.id}}/" role="button">Editar producto</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

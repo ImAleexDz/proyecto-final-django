@@ -36,15 +36,20 @@ def list_products(request):
     products = Products.objects.all()
     categories = Category.objects.all()
         
-    for product in products:
-        for category in categories:
-            if product.category == category.name:
-                if category.is_active == True:
-                    print(product.__dict__)
-                    context = {
-                        "products": product.__dict__
-                    }
-                    return render(request, "products/list_products.html", context=context)
+    context = {
+        "products": products,
+        "categories": categories
+        }
+    return render(request, "products/list_products.html", context=context)
+
+def all_products(request):
+    products = Products.objects.all()
+        
+    context = {
+        "products": products
+        }
+
+    return render(request, "products/all_products.html", context=context)
 
 
 def view_product(request, pk):
@@ -82,9 +87,9 @@ def update_product(request, pk):
                 'description': product.description,
                 'is_active': product.is_active,
                 'category': product.category,
+                'image': product.image
             }
         )
-        print(form)
         context = {'form': form}
 
         return render(request, 'products/update_product.html', context=context)
