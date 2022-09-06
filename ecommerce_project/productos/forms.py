@@ -10,4 +10,5 @@ class ProductForm(forms.Form):
     description = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 5, 'cols': 20,}), label="Descripción")
     is_active= forms.BooleanField(label="Activo?")
     category= forms.ModelChoiceField(label="Categoría", queryset=Category.objects.all())
+    image = forms.ImageField(required=False)
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-    Crear categorías
+    Editar producto
 {% endblock %}
 
 {% block contenido %}
@@ -9,12 +9,12 @@
     <div class="row">
         <div class="col-12 mt-4">
             <h1>
-                Crear categoría
+                Editar producto
             </h1>
         </div>
         
-        <div class="col-12">
-            <form method="POST">
+         <div class="col-12">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <div>
@@ -35,11 +35,12 @@
 
                 <div class="mt-2">
                     <label class="text-secondary">
-                        {{form.keywords.label}}
+                        {{form.price.label}}
                     </label>
                     <br/>
-                    {{form.keywords}}
+                    {{form.price}}
                 </div>
+                <br/>
 
                 <div class="mt-2">
                     <label class="text-secondary">
@@ -49,9 +50,20 @@
                     {{form.is_active}}
                 </div>
                 <br/>
-                <input class="btn btn-primary" type="submit" value="Crear" />
+
+                <div class="mt-2">
+                    <label class="text-secondary">
+                        {{form.category.label}}: {{form.category.value}}
+                    </label>
+                    <br/>
+                    {{form.category}}
+                </div>
+                <br/>
+
+
+                <input class="btn btn-primary" type="submit" value="Editar" />
             </form>
-        </div>
+
     </div>
 </div>
 
