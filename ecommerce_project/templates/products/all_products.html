@@ -15,23 +15,51 @@
         </div>
 
         {% for element in products %}
-            <div class="col-xs-12 col-md-4 mt-2">
-                <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; height: 100%">
-                    <div class="card-body">
-                        
-                        <h4 class="card-title">{{element.name}}</h4>
-                        <p class="card-text">${{element.price}}</p>
-                        
-                    </div>
+            {% if element.is_active %}
+                <div class="col-xs-12 col-md-4 mt-2">
+                    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; height: 100%">
+                        <div class="card-body">
+                            
+                            <h4 class="card-title">{{element.name}}</h4>
+                            <p class="card-text">${{element.price}}</p>
+                            
+                        </div>
 
-                    <div class="card-footer text-center">
-                        <a class="btn btn-success" href="/products/item/{{element.id}}/" role="button">Ver producto</a>
-                        <br/>
-                        <br/>
-                        <a class="btn btn-primary" href="/products/update-product/{{element.id}}/" role="button">Editar producto</a>
+                        <div class="card-footer text-center">
+                            <a class="btn btn-success" href="/products/item/{{element.id}}/" role="button">Ver producto</a>
+                            <br/>
+                            <br/>
+                            <a class="btn btn-primary" href="/products/update-product/{{element.id}}/" role="button">Editar producto</a>
+                            <br/>
+                            <br/>
+                            <a class="btn btn-danger" href="/products/delete-product/{{element.id}}/" role="button">Eliminar producto</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            
+            {% else %}
+                <div class="col-xs-12 col-md-4 mt-2">
+                    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; height: 100%">
+                        <div class="card-body">
+                            <div class="alert alert-danger" role="alert">
+                                Inactivo
+                            </div>
+                            <h4 class="card-title">{{element.name}}</h4>
+                            <p class="card-text">${{element.price}}</p>
+                        </div>
+
+                        <div class="card-footer text-center">
+                            <a class="btn btn-success" href="/products/item/{{element.id}}/" role="button">Ver producto</a>
+                            <br/>
+                            <br/>
+                            <a class="btn btn-primary" href="/products/update-product/{{element.id}}/" role="button">Editar producto</a>
+                            <br/>
+                            <br/>
+                            <a class="btn btn-danger" href="/products/delete-product/{{element.id}}/" role="button">Eliminar producto</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 </div>
