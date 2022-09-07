@@ -21,6 +21,11 @@
                         <div class="col-xs-12 col-md-4 mt-2">
                             <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; height: 100%">
                                 <div class="card-body">
+                                    {% if element.image %}
+                                    <img src="{{element.image.url}}" class="card-img-top">
+                                    {% else %}
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1200px-Imagen_no_disponible.svg.png" class="card-img-top">
+                                    {% endif %}
                                     
                                     <h4 class="card-title">{{element.name}}</h4>
                                     <p class="card-text">${{element.price}}</p>

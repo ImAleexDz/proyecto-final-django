@@ -38,6 +38,33 @@
                         </div>
                     </div>
                 </div>
+            
+            {% else %}
+                <div class="col-xs-12 col-md-4 mt-2">
+                    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; height: 100%">
+                        <div class="alert alert-danger" role="alert">
+                            Inactivo
+                          </div>
+                        <div class="card-body">
+                            <h4 class="card-title">{{element.name}}</h4>
+                            <p class="card-text">{{element.description}}</p>
+                            <p class="card-text">Palabras clave: {{element.keywords}}</p>
+                        </div>
+
+                        <div class="card-footer text-center">
+                            <a class="btn btn-success" href="#" role="button">
+                                Ver productos
+                            </a>
+
+                            <br/>
+                            <br/>
+
+                            <a class="btn btn-primary" href="/categories/update-category/{{element.id}}" role="button">
+                                Editar
+                            </a>
+                        </div>
+                    </div>
+                </div>
             {% endif %}
         {% endfor %}
     </div>

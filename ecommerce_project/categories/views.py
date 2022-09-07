@@ -12,6 +12,15 @@ def list_categories(request):
 
     return render(request, 'categories/list_categories.html', context=context)
 
+def all_categories(request):
+    categories = Category.objects.all()
+
+    context = {
+        'categories': categories
+    }
+
+    return render(request, 'categories/all_categories.html', context=context)
+
 def create_category(request):
 
     if request.method == 'POST':

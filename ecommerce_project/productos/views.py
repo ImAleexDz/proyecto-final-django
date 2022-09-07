@@ -11,7 +11,7 @@ import json
 def create_product(request):
 
     if request.method == "POST":
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
 
         if form.is_valid():
             Products.objects.create(
@@ -86,8 +86,7 @@ def update_product(request, pk):
                 'price': product.price,
                 'description': product.description,
                 'is_active': product.is_active,
-                'category': product.category,
-                'image': product.image
+                'category': product.category
             }
         )
         context = {'form': form}
