@@ -1,13 +1,10 @@
-from email.mime import image
-from math import prod
-from typing import List
-from unicodedata import name
 from django.shortcuts import redirect, render
 from productos.models import Products
 from .forms import ProductForm
 from categories.models import Category
-import json
+from django.contrib.auth.decorators import login_required
 
+#@login_required
 def create_product(request):
 
     if request.method == "POST":
@@ -20,7 +17,8 @@ def create_product(request):
                 description = form.cleaned_data['description'],
                 is_active = form.cleaned_data['is_active'],
                 category = form.cleaned_data['category'],
-                image = form.cleaned_data['image']
+                image = form.cleaned_data['image'],
+                stock = form.cleaned_data['stock']
             )
 
         return redirect(all_products)
@@ -72,6 +70,7 @@ def update_product(request, pk):
             product.description = form.cleaned_data['description']
             product.is_active = form.cleaned_data['is_active']
             product.category = str(form.cleaned_data['category'])
+            product.stock = form.cleaned_data['stock']
 
             product.save()
 

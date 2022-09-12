@@ -1,3 +1,4 @@
+from cProfile import label
 from distutils.command.upload import upload
 from os import name
 from django.db import models
@@ -10,4 +11,4 @@ class Products(models.Model):
     is_active=models.BooleanField(default=False)
     category=models.CharField(max_length=40)
     image = models.ImageField(upload_to="products/", null=True, blank=True)
-
+    stock = models.IntegerField(default=0)

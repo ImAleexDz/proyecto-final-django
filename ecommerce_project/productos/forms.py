@@ -11,4 +11,5 @@ class ProductForm(forms.Form):
     is_active= forms.BooleanField(label="Activo?", required=False)
     category= forms.ModelChoiceField(label="Categoría", queryset=Category.objects.all())
     image = forms.ImageField(required=False)
+    stock = forms.IntegerField(label="Stock", min_value=0)
 
